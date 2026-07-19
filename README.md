@@ -1,15 +1,15 @@
 # 🧩 Tmux Configuration
 
-This repository contains my personal tmux configuration, designed for a Vim‑centric workflow, productivity, and a clean modern interface using the Catppuccin theme. It is optimized for daily development work and integrates seamlessly with Neovim.
+This repository contains my personal tmux configuration, designed for a Vim-centric workflow, productivity, and a clean modern interface using the Catppuccin theme. It is optimized for daily development work and integrates seamlessly with Neovim.
 
 ---
 
 ## ✨ Features
 
-- Prefix key set to Ctrl + a
-- Vim‑style pane navigation and resizing
+- Prefix key set to `Ctrl + a`
+- Vim-style pane navigation and resizing
 - Mouse support enabled
-- True color (24‑bit) terminal support
+- True color (24-bit) terminal support
 - Persistent tmux sessions across reboots
 - Fast session switching
 - Clean and informative status bar
@@ -20,143 +20,146 @@ This repository contains my personal tmux configuration, designed for a Vim‑ce
 ## ⌨️ Key Bindings
 
 ### Prefix
-Ctrl + a
 
-### Reload tmux configuration
-Prefix + r
+- `Ctrl + a`
+
+### Reload configuration
+
+- `Prefix + r` — reload `~/.config/tmux/tmux.conf`
+
+### Pane splits
+
+- `Prefix + |` — split pane horizontally (`split-window -h`)
+- `Prefix + -` — split pane vertically (`split-window -v`)
+
+All new panes open in the current pane directory.
+
+### Pane resizing (Vim style)
+
+- `Prefix + h` — resize pane left
+- `Prefix + j` — resize pane down
+- `Prefix + k` — resize pane up
+- `Prefix + l` — resize pane right
+
+### Maximize / restore pane
+
+- `Prefix + m` — toggle pane zoom (`resize-pane -Z`)
+
+### Copy mode (Vi keys)
+
+- `Prefix + v` — enter copy mode
+- `v` — begin selection
+- `y` — copy selection
+
+Mouse selection in copy mode is disabled to avoid conflicts.
+
+### Window management
+
+- `Prefix + c` — create a new window (default tmux binding)
+- `Prefix + ,` — rename current window (default tmux binding)
+- `Prefix + &` — kill current window (default tmux binding)
+- `Prefix + p` — previous window (default tmux binding)
+- `Prefix + <number>` — select window by number (default tmux binding)
+- `Alt + h` — move current window left (`move-window -r`)
+
+### Session management
+
+- `Prefix + n` — create a new named session
+- `Prefix + I` — install plugins with TPM
+- `Prefix + U` — update plugins with TPM
+- `Prefix + Alt + u` — remove unused plugins with TPM
 
 ---
 
-### Pane Splits
+## 🖱️ Mouse and terminal
 
-- Horizontal split: Prefix + |
-- Vertical split: Prefix + -
-
-Splits open in the current pane directory.
-
----
-
-### Pane Resizing (Vim style)
-
-Resize panes using:
-Prefix + h / j / k / l
-
-Maximize or restore pane:
-Prefix + m
-
----
-
-### Copy Mode (Vim bindings)
-
-- Enter copy mode: Prefix + v
-- Start selection: v
-- Copy selection: y
-
-Mouse drag copy is disabled to avoid conflicts.
-
----
-
-### Window and Session Management
-
-- Move window left: Alt + h
-- Create a new named session: Prefix + n
-
----
-
-## 🖱️ Mouse and Terminal Support
-
-- Mouse support enabled
-- True color support using tmux-256color
-- RGB passthrough enabled for modern terminals
+- `mouse on` — mouse support enabled
+- `tmux-256color` — default terminal
+- RGB passthrough enabled for true color
 
 ---
 
 ## 🔌 Plugins
 
-Plugins are managed using **Tmux Plugin Manager (TPM)**.
+Plugins are managed with **Tmux Plugin Manager (TPM)**.
 
-### Installed Plugins and Commands
+### Installed plugins
 
 #### tmux-plugins/tpm
-Tmux Plugin Manager.
+
+Plugin manager for tmux.
 
 Commands:
-- Install plugins: Prefix + I
-- Update plugins: Prefix + U
-- Remove unused plugins: Prefix + Alt + u
+
+- `Prefix + I` — install plugins
+- `Prefix + U` — update plugins
+- `Prefix + Alt + u` — remove unused plugins
 
 ---
 
 #### christoomey/vim-tmux-navigator
+
 Seamless navigation between tmux panes and Neovim splits.
 
 Commands:
-- Ctrl + h / j / k / l  
-  Move between tmux panes and Neovim splits seamlessly.
+
+- `Ctrl + h` / `Ctrl + j` / `Ctrl + k` / `Ctrl + l` — move between tmux panes and Neovim splits
 
 ---
 
 #### omerxx/tmux-sessionx
-Fast and interactive tmux session manager.
+
+Interactive tmux session manager.
 
 Commands:
-- Prefix + o  
-  Open session switcher (fzf-based).
 
----
-
-#### tmux-plugins/tmux-resurrect
-Persist tmux sessions after reboot.
-
-Commands:
-- Prefix + Ctrl + s  
-  Save tmux session.
-- Prefix + Ctrl + r  
-  Restore tmux session.
-
-Pane contents are captured automatically.
+- `Prefix + o` — open session switcher
 
 ---
 
 #### tmux-plugins/tmux-continuum
-Automatic tmux session saving and restoring.
+
+Automatic session saving and restoring.
 
 Behavior:
-- Automatically saves sessions every 15 minutes.
-- Automatically restores sessions on tmux startup.
 
-No manual commands required.
+- Automatically saves sessions every 15 minutes
+- Automatically restores sessions at tmux startup
+- No extra manual commands required
 
 ---
 
 #### catppuccin/tmux
+
 Catppuccin theme for tmux.
 
 Behavior:
-- Applies Catppuccin Mocha theme.
-- Controls colors for status bar, windows, and panes.
 
-No runtime commands.
+- Applies the `mocha` flavor
+- Styles the status bar and window/pane appearance
+- No runtime commands required
 
 ---
 
 #### tmux-plugins/tmux-online-status
-Displays network connectivity status in the status bar.
+
+Shows network connectivity status in the status bar.
 
 Behavior:
-- Shows online or offline indicator automatically.
 
-No runtime commands.
+- Displays `on` or `off` automatically
+- No runtime commands required
 
 ---
 
 #### tmux-plugins/tmux-battery
+
 Displays battery status in the status bar.
 
 Behavior:
-- Shows battery icon and percentage automatically.
 
-No runtime commands.
+- Shows battery icon and percentage automatically
+- No runtime commands required
 
 ---
 
@@ -194,17 +197,16 @@ Plugins are stored in:
 ## 🚀 Installation
 
 1. Clone TPM:
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+   git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 2. Start tmux and install plugins:
-Prefix + I
+   `Prefix + I`
 
 3. Reload configuration:
-Prefix + r
+   `Prefix + r`
 
 ---
 
 ## 📝 Notes
 
-This configuration is designed for keyboard‑driven workflows, optimized for Neovim users, and focused on being clean, minimal, and fast.
-🇼🇫
+This configuration is designed for keyboard-driven workflows, optimized for Neovim users, and focused on being clean, minimal, and fast.
